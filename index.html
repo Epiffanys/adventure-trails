@@ -108,7 +108,7 @@
     .nav-links a {
       color: var(--white);
       font-weight: 600;
-      transition: opacity 0.2s ease, color 0.2s ease;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -118,7 +118,7 @@
     .hero {
       min-height: 92vh;
       background:
-        linear-gradient(rgba(24, 35, 29, 0.42), rgba(24, 35, 29, 0.48)),
+        linear-gradient(rgba(24, 35, 29, 0.42), rgba(24, 35, 29, 0.5)),
         url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
       color: var(--white);
       display: flex;
@@ -165,7 +165,7 @@
 
     .btn {
       display: inline-block;
-      padding: 0.95rem 1.3rem;
+      padding: 0.9rem 1.15rem;
       border-radius: 999px;
       font-weight: 700;
       transition: transform 0.2s ease, background 0.2s ease;
@@ -205,7 +205,7 @@
     }
 
     .section-title p {
-      max-width: 700px;
+      max-width: 760px;
       margin: 0 auto;
       color: #5a5a5a;
     }
@@ -215,13 +215,14 @@
     .stories-grid,
     .gallery-grid,
     .contact-grid,
-    .stats-grid {
+    .stats-grid,
+    .trails-grid {
       display: grid;
       gap: 1.5rem;
     }
 
     .intro-grid {
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: stretch;
     }
 
@@ -281,11 +282,28 @@
       font-family: Georgia, "Times New Roman", serif;
     }
 
+    .trail-category {
+      margin-top: 3rem;
+    }
+
+    .trail-category:first-of-type {
+      margin-top: 0;
+    }
+
+    .category-heading {
+      color: var(--deep-forest);
+      font-size: 1.8rem;
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 3px solid var(--sand);
+    }
+
     .trails-grid,
     .tips-grid,
     .stories-grid,
     .gallery-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .card,
@@ -301,7 +319,7 @@
     }
 
     .card img {
-      height: 230px;
+      height: 220px;
       object-fit: cover;
     }
 
@@ -317,6 +335,12 @@
       color: var(--forest);
       margin-bottom: 0.6rem;
       font-size: 1.2rem;
+    }
+
+    .location {
+      color: var(--clay);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
     }
 
     .trail-details {
@@ -373,7 +397,7 @@
       border-radius: var(--radius);
     }
 
-    .accessibility-note {
+    .safety-note {
       background: var(--deep-forest);
       color: var(--white);
       padding: 2rem;
@@ -382,7 +406,7 @@
       box-shadow: var(--shadow);
     }
 
-    .accessibility-note h3 {
+    .safety-note h3 {
       font-family: Georgia, "Times New Roman", serif;
       margin-bottom: 0.6rem;
       color: var(--sand);
@@ -531,6 +555,7 @@
       <button class="menu-toggle" aria-label="Open navigation menu" onclick="toggleMenu()">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
+        <li><a href="#planning">Plan</a></li>
         <li><a href="#trails">Trails</a></li>
         <li><a href="#tips">Tips</a></li>
         <li><a href="#stories">Stories</a></li>
@@ -543,153 +568,392 @@
   <main>
     <section class="hero" id="home">
       <div class="hero-content">
-        <div class="eyebrow">Trail guides • outdoor tips • adventure stories</div>
+        <div class="eyebrow">Real U.S. trails • hiking tips • trip planning</div>
         <h1>Find your next path, one trail at a time.</h1>
         <p>
-          Adventure Trails is a hiking and travel blog designed to inspire outdoor exploration while giving visitors useful, practical information they can actually take with them on the trail.
+          Find easy walks, scenic hikes, and more challenging trails across the U.S. Use this guide to quickly compare distance, difficulty, and location before you go.
         </p>
         <div class="hero-buttons">
           <a class="btn btn-primary" href="#trails">Explore Trail Guides</a>
-          <a class="btn btn-secondary" href="#about">Learn More</a>
+          <a class="btn btn-secondary" href="#tips">Read Hiking Tips</a>
         </div>
       </div>
     </section>
 
-    <section class="container" id="about">
+    <section class="container" id="planning">
       <div class="section-title">
-        <h2>About Adventure Trails</h2>
+        <h2>Plan Before You Go</h2>
         <p>
-          Built for hikers, travelers, and curious beginners, this website blends useful trail information with a warm, outdoors-inspired design that feels grounded, natural, and inviting.
+          A good hike starts before you even get to the trail. Check the weather, distance, elevation, parking, and any permits you might need.
         </p>
       </div>
 
       <div class="intro-grid">
         <div class="panel">
-          <h3>A resource and a source of inspiration</h3>
+          <h3>Pick a trail that fits your day</h3>
           <p>
-            Adventure Trails is meant to do two things at once: help visitors plan their adventures and make them excited to get outside. The site includes trail guides by location, beginner-friendly hiking advice, packing suggestions, destination highlights, and blog-style reflections from the trail.
+            Easy trails are great for short walks, families, or beginners. Moderate trails are a bit longer or steeper. Hard trails usually take more time, effort, and planning.
           </p>
           <p>
-            The overall visual direction follows an earthy color palette, scenic imagery, and a rustic, outdoorsy tone to match the website’s purpose. The layout is designed to be easy to navigate, readable, and welcoming for people who want both information and inspiration.
+            Trail conditions can change quickly. Weather, closures, or seasonal changes can all affect your hike. Always check the official trail page before you go.
           </p>
         </div>
 
         <div class="highlights">
           <div class="highlight-item">
-            <strong>Purpose:</strong> Inspire and inform outdoor enthusiasts.
+            <strong>Bring:</strong> water, snacks, sun protection, layers, a map, and a charged phone.
           </div>
           <div class="highlight-item">
-            <strong>Audience:</strong> Hikers, travelers, and beginners looking for practical guidance.
+            <strong>Check:</strong> distance, elevation, parking, closures, permits, and trail surface.
           </div>
           <div class="highlight-item">
-            <strong>Style:</strong> Earthy, scenic, rustic, and easy to explore.
+            <strong>Respect:</strong> wildlife, posted signs, other hikers, and Leave No Trace principles.
           </div>
         </div>
       </div>
 
-      <div class="stats-grid" aria-label="Website highlights">
-        <div class="stat"><strong>3</strong> featured trail guides</div>
-        <div class="stat"><strong>4</strong> practical hiking tips</div>
-        <div class="stat"><strong>6</strong> easy navigation sections</div>
+      <div class="stats-grid" aria-label="Trail guide highlights">
+        <div class="stat"><strong>18</strong> real U.S. trail options</div>
+        <div class="stat"><strong>6</strong> easy routes</div>
+        <div class="stat"><strong>6</strong> moderate routes</div>
+        <div class="stat"><strong>6</strong> hard routes</div>
       </div>
     </section>
 
     <section class="container" id="trails">
       <div class="section-title">
-        <h2>Featured Trail Guides</h2>
+        <h2>Trail Guides by Difficulty</h2>
         <p>
-          Browse trails by destination and discover what to expect before you lace up your boots.
+          These trails are grouped by difficulty to make it easier to compare. Each card includes the location, a short trail overview, and a link to an official trail or park page.
         </p>
       </div>
 
-      <div class="trails-grid">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Mountain lake trail with pine trees" />
-          <div class="card-content">
-            <h3>Mountain Lake Loop</h3>
-            <p>A scenic day hike with alpine views, forest shade, and a calm lake waiting at the finish.</p>
-            <div class="trail-details">
-              <span><strong>Level</strong><br />Moderate</span>
-              <span><strong>Distance</strong><br />5.2 miles</span>
-              <span><strong>Best For</strong><br />Views</span>
+      <div class="trail-category">
+        <h3 class="category-heading">Easy Trails</h3>
+        <div class="trails-grid">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Lower Yosemite Fall viewed from the trail" />
+            <div class="card-content">
+              <h3>Lower Yosemite Fall Trail</h3>
+              <p class="location">Yosemite National Park, California</p>
+              <p>This short loop leads to the base of Lower Yosemite Fall, one of the most popular waterfall views in Yosemite Valley. The trail is paved, mostly flat, and easy to follow. It is a good choice for beginners, families, or anyone who wants a quick scenic walk with a big payoff.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Easy</span>
+                <span><strong>Distance</strong><br />1 mile loop</span>
+                <span><strong>Feature</strong><br />Waterfall</span>
+              </div>
+              <a href="https://www.nps.gov/yose/planyourvisit/lowerfalltrail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
             </div>
-            <a href="https://www.alltrails.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">View Trail Info</a>
-            <span class="tag">Trail Guide</span>
-          </div>
-        </article>
+          </article>
 
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Rocky overlook above a hiking valley" />
-          <div class="card-content">
-            <h3>Canyon Ridge Trail</h3>
-            <p>A rugged route with dramatic overlooks, ideal for adventurous hikers who love sweeping views.</p>
-            <div class="trail-details">
-              <span><strong>Level</strong><br />Hard</span>
-              <span><strong>Distance</strong><br />7.8 miles</span>
-              <span><strong>Best For</strong><br />Challenge</span>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80" alt="Pa'rus Trail in Zion National Park" />
+            <div class="card-content">
+              <h3>Pa'rus Trail</h3>
+              <p class="location">Zion National Park, Utah</p>
+              <p>The Pa'rus Trail is a paved path that follows the Virgin River through Zion Canyon. It has wide canyon views, gentle grades, and several places to stop and enjoy the scenery. This trail is a relaxed option for visitors who want an easy walk without taking on Zion’s steeper routes.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Easy</span>
+                <span><strong>Distance</strong><br />3.2 miles round trip</span>
+                <span><strong>Feature</strong><br />River views</span>
+              </div>
+              <a href="https://www.nps.gov/thingstodo/hike-pa-rus-trail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
             </div>
-            <a href="https://www.nps.gov/index.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Explore National Parks</a>
-            <span class="tag">Destination Highlight</span>
-          </div>
-        </article>
+          </article>
 
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Sunlit forest trail through tall trees" />
-          <div class="card-content">
-            <h3>Pine Hollow Path</h3>
-            <p>A relaxed beginner trail through wooded scenery, perfect for a quiet morning hike.</p>
-            <div class="trail-details">
-              <span><strong>Level</strong><br />Easy</span>
-              <span><strong>Distance</strong><br />2.9 miles</span>
-              <span><strong>Best For</strong><br />Beginners</span>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80" alt="Congress Trail in Sequoia National Park" />
+            <div class="card-content">
+              <h3>Congress Trail</h3>
+              <p class="location">Sequoia National Park, California</p>
+              <p>Congress Trail begins near the General Sherman Tree and takes hikers through a grove of giant sequoias. The path is paved and easy to follow, but it still feels peaceful once you move away from the busiest viewing areas. It is a great trail for seeing some of the park’s most famous trees up close.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Easy</span>
+                <span><strong>Distance</strong><br />2.7 miles</span>
+                <span><strong>Feature</strong><br />Giant trees</span>
+              </div>
+              <a href="https://www.nps.gov/thingstodo/congress-trail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
             </div>
-            <a href="https://www.rei.com/learn/expert-advice/hiking-for-beginners.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Beginner Hiking Guide</a>
-            <span class="tag">Beginner Friendly</span>
-          </div>
-        </article>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Cook's Meadow area in Yosemite Valley" />
+            <div class="card-content">
+              <h3>Cook's Meadow Loop</h3>
+              <p class="location">Yosemite National Park, California</p>
+              <p>Cook's Meadow Loop is a short, flat walk in Yosemite Valley with views of Yosemite Falls, Half Dome, Glacier Point, and Sentinel Rock. It is a good trail when you want beautiful views without a long climb. The loop also works well as a calm introduction to the valley before exploring longer hikes.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Easy</span>
+                <span><strong>Distance</strong><br />1 mile loop</span>
+                <span><strong>Feature</strong><br />Valley views</span>
+              </div>
+              <a href="https://www.nps.gov/yose/planyourvisit/cooksmeadowtrail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Laurel Falls in Great Smoky Mountains National Park" />
+            <div class="card-content">
+              <h3>Laurel Falls Trail</h3>
+              <p class="location">Great Smoky Mountains National Park, Tennessee</p>
+              <p>Laurel Falls Trail is a popular paved route that leads to an 80-foot waterfall. The trail has some uphill sections, but it is still one of the easier waterfall hikes in the park. Because it is well known and close to park roads, it can get crowded, so an early start is helpful.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Easy</span>
+                <span><strong>Distance</strong><br />2.6 miles round trip</span>
+                <span><strong>Feature</strong><br />Waterfall</span>
+              </div>
+              <a href="https://www.nps.gov/grsm/planyourvisit/laurel-falls-trail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1200&q=80" alt="Grand Canyon view from the Rim Trail area" />
+            <div class="card-content">
+              <h3>Rim Trail</h3>
+              <p class="location">Grand Canyon National Park, Arizona</p>
+              <p>The Rim Trail follows the South Rim and offers many canyon viewpoints. Some sections are paved and mostly flat, so visitors can choose a short walk or a longer outing. It is a good option for seeing the Grand Canyon without hiking below the rim.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Easy</span>
+                <span><strong>Distance</strong><br />Varies</span>
+                <span><strong>Feature</strong><br />Canyon views</span>
+              </div>
+              <a href="https://www.nps.gov/grca/planyourvisit/day-hiking.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="trail-category">
+        <h3 class="category-heading">Moderate Trails</h3>
+        <div class="trails-grid">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Emerald Lake in Rocky Mountain National Park" />
+            <div class="card-content">
+              <h3>Emerald Lake Trail</h3>
+              <p class="location">Rocky Mountain National Park, Colorado</p>
+              <p>Emerald Lake Trail starts near Bear Lake and passes Nymph Lake and Dream Lake before reaching Emerald Lake. The route is not very long, but the elevation and rocky sections make it feel more challenging than an easy walk. It is a popular choice for hikers who want alpine lake views in a shorter distance.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Moderate</span>
+                <span><strong>Distance</strong><br />3.6 miles round trip</span>
+                <span><strong>Feature</strong><br />Alpine lakes</span>
+              </div>
+              <a href="https://www.nps.gov/thingstodo/romo_emeraldlake.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Red rock landscape in Arches National Park near Delicate Arch" />
+            <div class="card-content">
+              <h3>Delicate Arch Trail</h3>
+              <p class="location">Arches National Park, Utah</p>
+              <p>Delicate Arch Trail climbs across open slickrock to one of the most recognized arches in the United States. The route has little shade, so heat can make it feel harder than the mileage suggests. This is a good hike for visitors who want a classic desert view and are prepared with water and sun protection.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Moderate</span>
+                <span><strong>Distance</strong><br />3 miles round trip</span>
+                <span><strong>Feature</strong><br />Sandstone arch</span>
+              </div>
+              <a href="https://www.nps.gov/arch/planyourvisit/delicate-arch.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Coastal mountain view in Acadia National Park near Cadillac Mountain" />
+            <div class="card-content">
+              <h3>Cadillac North Ridge Trail</h3>
+              <p class="location">Acadia National Park, Maine</p>
+              <p>Cadillac North Ridge Trail leads toward the summit of Cadillac Mountain, one of the best-known viewpoints in Acadia. The trail has steady climbing, open rock sections, and wide views of the coastline. It is a good moderate route for hikers who want a summit experience without choosing one of the park’s hardest climbs.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Moderate</span>
+                <span><strong>Distance</strong><br />4.4 miles round trip</span>
+                <span><strong>Feature</strong><br />Summit views</span>
+              </div>
+              <a href="https://www.nps.gov/thingstodo/hike-cadillac-north-ridge-trail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1508264165352-258db2ebd59b?auto=format&fit=crop&w=1200&q=80" alt="Mount Washburn Trail in Yellowstone National Park" />
+            <div class="card-content">
+              <h3>Mount Washburn Trail</h3>
+              <p class="location">Yellowstone National Park, Wyoming</p>
+              <p>Mount Washburn is a steady climb to broad views of Yellowstone. The trail is exposed in places, so weather and wind can affect the hike. It is a strong option for hikers who want a moderate mountain route with a clear destination and a wide viewpoint at the top.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Moderate</span>
+                <span><strong>Distance</strong><br />5.8 miles round trip</span>
+                <span><strong>Feature</strong><br />Mountain views</span>
+              </div>
+              <a href="https://www.nps.gov/thingstodo/yell-trail-chittdenden-road-mount-washburn.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Hidden Lake Overlook in Glacier National Park" />
+            <div class="card-content">
+              <h3>Hidden Lake Overlook Trail</h3>
+              <p class="location">Glacier National Park, Montana</p>
+              <p>Hidden Lake Overlook Trail begins near Logan Pass and climbs through open alpine scenery. The route is known for mountain views, wildflowers in season, and the chance to see wildlife from a safe distance. Snow can remain on the trail into summer, so checking current conditions is important.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Moderate</span>
+                <span><strong>Distance</strong><br />2.8 miles round trip</span>
+                <span><strong>Feature</strong><br />Alpine views</span>
+              </div>
+              <a href="https://www.nps.gov/glac/planyourvisit/hikingthetrails.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=80" alt="Alberta Falls in Rocky Mountain National Park" />
+            <div class="card-content">
+              <h3>Alberta Falls Trail</h3>
+              <p class="location">Rocky Mountain National Park, Colorado</p>
+              <p>Alberta Falls Trail is a shorter hike that leads to a scenic waterfall in Rocky Mountain National Park. The distance is manageable, but the uneven trail surface and elevation can make it feel more moderate for some visitors. It is a good choice when you want a classic park waterfall without committing to a long hike.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Moderate</span>
+                <span><strong>Distance</strong><br />1.6 miles round trip</span>
+                <span><strong>Feature</strong><br />Waterfall</span>
+              </div>
+              <a href="https://www.nps.gov/romo/planyourvisit/list_hiking_trails.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="trail-category">
+        <h3 class="category-heading">Hard Trails</h3>
+        <div class="trails-grid">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="View from Angels Landing Trail in Zion National Park" />
+            <div class="card-content">
+              <h3>Angels Landing</h3>
+              <p class="location">Zion National Park, Utah</p>
+              <p>Angels Landing is one of Zion’s most famous hikes and is known for steep climbing and exposed sections. The final chain section requires a permit, and the route is not a good choice for anyone uncomfortable with heights. Hikers should plan ahead, carry water, and check current permit rules before visiting.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Hard</span>
+                <span><strong>Distance</strong><br />5.4 miles round trip</span>
+                <span><strong>Feature</strong><br />Permit hike</span>
+              </div>
+              <a href="https://www.nps.gov/zion/planyourvisit/angels-landing-hiking-permits.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80" alt="Half Dome in Yosemite National Park" />
+            <div class="card-content">
+              <h3>Half Dome Day Hike</h3>
+              <p class="location">Yosemite National Park, California</p>
+              <p>The Half Dome Day Hike is a long and very strenuous route with major elevation gain. When the cables are up, hikers need a permit to continue to the summit. This hike requires an early start, strong preparation, and careful attention to weather because storms can make the route dangerous.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Hard</span>
+                <span><strong>Distance</strong><br />14-16 miles</span>
+                <span><strong>Feature</strong><br />Cables route</span>
+              </div>
+              <a href="https://www.nps.gov/yose/planyourvisit/halfdome.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1200&q=80" alt="Bright Angel Trail at the Grand Canyon" />
+            <div class="card-content">
+              <h3>Bright Angel Trail</h3>
+              <p class="location">Grand Canyon National Park, Arizona</p>
+              <p>Bright Angel Trail descends below the South Rim and is much harder on the return climb. Hikers can choose different turnaround points, but even shorter sections require planning because of heat, elevation change, and limited shade. This trail is best for visitors who understand that hiking back up takes more effort than going down.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Hard</span>
+                <span><strong>Distance</strong><br />Varies</span>
+                <span><strong>Feature</strong><br />Canyon descent</span>
+              </div>
+              <a href="https://www.nps.gov/places/000/bright-angel-trail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1508264165352-258db2ebd59b?auto=format&fit=crop&w=1200&q=80" alt="Mount Rainier from Skyline Trail" />
+            <div class="card-content">
+              <h3>Skyline Trail</h3>
+              <p class="location">Mount Rainier National Park, Washington</p>
+              <p>Skyline Trail is a demanding loop near Paradise with views of Mount Rainier, glaciers, wildflowers, and open alpine terrain. The trail has significant elevation gain and can still have snow depending on the season. It is a rewarding hike, but visitors should check conditions and be ready for changing mountain weather.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Hard</span>
+                <span><strong>Distance</strong><br />5.5 miles loop</span>
+                <span><strong>Feature</strong><br />Glacier views</span>
+              </div>
+              <a href="https://www.nps.gov/mora/planyourvisit/skyline-trail.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Grinnell Glacier Trail in Glacier National Park" />
+            <div class="card-content">
+              <h3>Grinnell Glacier Trail</h3>
+              <p class="location">Glacier National Park, Montana</p>
+              <p>Grinnell Glacier Trail is a long hike with mountain views, lakes, and a steady climb toward glacier scenery. The distance and elevation gain make it a serious day hike for most visitors. Wildlife, snow, and weather can affect the route, so checking park updates before starting is important.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Hard</span>
+                <span><strong>Distance</strong><br />10.6 miles round trip</span>
+                <span><strong>Feature</strong><br />Glacier views</span>
+              </div>
+              <a href="https://www.nps.gov/glac/planyourvisit/hikingthetrails.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80" alt="Cascade Canyon Trail in Grand Teton National Park" />
+            <div class="card-content">
+              <h3>Cascade Canyon Trail</h3>
+              <p class="location">Grand Teton National Park, Wyoming</p>
+              <p>Cascade Canyon Trail offers dramatic mountain scenery, forested sections, and views into one of Grand Teton’s most popular canyon areas. The hike can become long depending on the starting point and turnaround choice. It is best for hikers who want a bigger mountain day with strong views and enough time to move at a steady pace.</p>
+              <div class="trail-details">
+                <span><strong>Level</strong><br />Hard</span>
+                <span><strong>Distance</strong><br />9+ miles</span>
+                <span><strong>Feature</strong><br />Mountain canyon</span>
+              </div>
+              <a href="https://www.nps.gov/grte/planyourvisit/hiking.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Official Trail Page</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="container tips-section" id="tips">
       <div class="section-title">
-        <h2>Outdoor Tips</h2>
+        <h2>Hiking Tips</h2>
         <p>
-          Practical advice that helps visitors feel prepared, comfortable, and confident on the trail.
+          These simple tips can help your hike go more smoothly.
         </p>
       </div>
 
       <div class="tips-grid">
         <div class="tip">
-          <h3>Pack with purpose</h3>
-          <p>Bring water, snacks, sunscreen, a phone charger, and a small first-aid kit. Lightweight essentials make a big difference.</p>
+          <h3>Pack the essentials</h3>
+          <p>Bring water, snacks, sunscreen, and a small first-aid kit. Even short hikes can feel longer if the weather changes.</p>
         </div>
         <div class="tip">
-          <h3>Start where you are</h3>
-          <p>Not every trail needs to be intense. Beginner hikes are a great way to build confidence and enjoy the outdoors without pressure.</p>
+          <h3>Match the trail to your group</h3>
+          <p>Pick a trail based on the slowest person in your group. Things like distance, hills, and weather can make a hike feel harder.</p>
         </div>
         <div class="tip">
-          <h3>Check conditions first</h3>
-          <p>Look up the weather, trail closures, and terrain details before heading out so your trip stays safe and stress-free.</p>
+          <h3>Start early on popular trails</h3>
+          <p>Starting early helps with parking, crowds, and heat. For longer hikes, give yourself extra time.</p>
         </div>
         <div class="tip">
           <h3>Leave no trace</h3>
-          <p>Respect the environment by cleaning up after yourself, staying on marked paths, and helping preserve the trail for others.</p>
+          <p>Stay on the trail, pack out your trash, and leave everything as you found it.</p>
         </div>
       </div>
 
-      <div class="accessibility-note">
-        <h3>Accessibility and design choices</h3>
+      <div class="safety-note">
+        <h3>Trail safety reminder</h3>
         <p>
-          This site uses clear section headings, readable contrast, descriptive image alt text, labeled form fields, keyboard focus styles, and a responsive layout so the design works across screen sizes.
+          Conditions can change depending on the season. Check the trail page and weather before you go. If something feels off, it is okay to turn around.
         </p>
       </div>
     </section>
 
     <section class="container" id="stories">
       <div class="section-title">
-        <h2>Adventure Stories</h2>
+        <h2>Trail Notes</h2>
         <p>
-          Personal, blog-style storytelling helps the website feel relatable rather than overly technical.
+          A few simple reminders for better hiking habits.
         </p>
       </div>
 
@@ -697,24 +961,24 @@
         <article class="story">
           <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80" alt="Hiker standing on a cliff at sunset" />
           <div class="story-content">
-            <h3>Chasing sunrise on the ridge</h3>
-            <p>A quiet early-morning climb turned into one of the most memorable views of the season, reminding me why slow, steady hikes are often the most rewarding.</p>
+            <h3>Know when to turn around</h3>
+            <p>Getting to the end is not worth risking your safety. Turning around early is always the better choice.</p>
           </div>
         </article>
 
         <article class="story">
           <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1200&q=80" alt="Campfire scene in the mountains" />
           <div class="story-content">
-            <h3>What I learned on my first overnight trip</h3>
-            <p>From overpacking to underestimating the temperature, this experience became the perfect lesson in preparation, pacing, and enjoying the unexpected.</p>
+            <h3>Plan your food and water</h3>
+            <p>Bring more water than you think you need, especially in hot areas. Snacks can also help keep your energy up.</p>
           </div>
         </article>
 
         <article class="story">
           <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=80" alt="Snowy mountain peak and hiking landscape" />
           <div class="story-content">
-            <h3>Finding stillness above the tree line</h3>
-            <p>A high-elevation trail offered more than views. It created space to unplug, reset, and appreciate just how grounding outdoor travel can be.</p>
+            <h3>Respect changing seasons</h3>
+            <p>Weather and trail conditions can change quickly. Always check recent updates instead of relying on old information.</p>
           </div>
         </article>
       </div>
@@ -722,36 +986,41 @@
 
     <section class="container" id="gallery">
       <div class="section-title">
-        <h2>Photo Gallery</h2>
+        <h2>Trail Inspiration Gallery</h2>
         <p>
-          Images help capture the atmosphere of each destination and bring the site’s adventurous tone to life.
+          Different landscapes offer different hiking experiences, from mountains to forests to desert trails.
         </p>
       </div>
 
       <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Mountain range at golden hour" />
-        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80" alt="Backpacker hiking through a valley" />
-        <img src="https://images.unsplash.com/photo-1444201983204-c43cbd584d93?auto=format&fit=crop&w=1200&q=80" alt="Forest trail with warm light" />
-        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Open road leading toward mountains" />
+        <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1200&q=80" alt="Mountain hiking trail leading through open alpine scenery" />
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80" alt="Trail through green mountain landscape" />
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80" alt="Rocky hiking trail near granite mountains" />
+        <img src="https://images.unsplash.com/photo-1439853949127-fa647821eba0?auto=format&fit=crop&w=1200&q=80" alt="Trail beside a mountain lake" />
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80" alt="Quiet trail in snowy mountain scenery" />
+        <img src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&w=1200&q=80" alt="High mountain trail with dramatic peaks" />
+        <img src="https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?auto=format&fit=crop&w=1200&q=80" alt="Forest trail surrounded by trees" />
+        <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1200&q=80" alt="Trail through a green wooded landscape" />
+        <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=80" alt="Dirt hiking path through natural scenery" />
       </div>
     </section>
 
     <section class="container" id="contact">
       <div class="section-title">
-        <h2>Plan Your Next Adventure</h2>
+        <h2>Ask a Trail Question</h2>
         <p>
-          Visitors can use this section to connect, ask questions, or request recommendations for future trail content.
+          Looking for a trail recommendation? Send a message with what you are looking for.
         </p>
       </div>
 
       <div class="contact-grid">
         <div class="contact-box">
-          <h3>Why this section matters</h3>
+          <h3>Before you message</h3>
           <p>
-            A strong website should feel interactive and useful. This contact area supports the blog’s community feel while giving visitors a clear next step.
+            Share your location, experience level, and what kind of scenery you are interested in.
           </p>
           <p style="margin-top: 1rem;">
-            It also balances the website’s informational content with a more personal, approachable touch.
+            Always double-check official sources before your trip.
           </p>
         </div>
 
@@ -771,7 +1040,7 @@
               <select id="topic">
                 <option>Trail recommendation</option>
                 <option>Beginner hiking question</option>
-                <option>Travel suggestion</option>
+                <option>Packing question</option>
                 <option>General message</option>
               </select>
             </div>
@@ -787,8 +1056,8 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 Adventure Trails. Designed for exploration, inspiration, and outdoor storytelling.</p>
-    <p>Trail guides • packing tips • destination highlights • adventure stories</p>
+    <p>&copy; 2026 Adventure Trails. Trail planning, hiking tips, and U.S. destination guides.</p>
+    <p>Check official trail pages before every hike.</p>
   </footer>
 
   <script>
@@ -805,3 +1074,4 @@
   </script>
 </body>
 </html>
+
