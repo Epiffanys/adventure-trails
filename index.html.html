@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adventure Trails</title>
+  <style>
+    :root {
+      --forest: #2f4f3e;
+      --deep-forest: #20382c;
+      --sage: #7f9b76;
+      --sand: #d9c7a3;
+      --cream: #f4efe6;
+      --clay: #a86f4c;
+      --charcoal: #2f2f2f;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a:focus,
+    button:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 3px solid var(--sand);
+      outline-offset: 3px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(47, 79, 62, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      z-index: 2;
+    }
+
+    .logo span {
+      color: var(--sand);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.65);
+      color: var(--white);
+      padding: 0.45rem 0.7rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.1rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-weight: 600;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--sand);
+    }
+
+    .hero {
+      min-height: 92vh;
+      background:
+        linear-gradient(rgba(24, 35, 29, 0.42), rgba(24, 35, 29, 0.48)),
+        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(244, 239, 230, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--sand);
+      color: var(--forest);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.75);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--forest);
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #5a5a5a;
+    }
+
+    .intro-grid,
+    .tips-grid,
+    .stories-grid,
+    .gallery-grid,
+    .contact-grid,
+    .stats-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .intro-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: stretch;
+    }
+
+    .panel,
+    .card,
+    .tip,
+    .story,
+    .contact-box,
+    .stat {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 2rem;
+    }
+
+    .panel h3 {
+      color: var(--forest);
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .panel p + p {
+      margin-top: 1rem;
+    }
+
+    .highlights {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      padding: 1.2rem;
+      background: #f8f4ec;
+      border-left: 5px solid var(--clay);
+      border-radius: 14px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      padding: 1.3rem;
+      text-align: center;
+      border-bottom: 5px solid var(--sage);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--forest);
+      font-size: 1.7rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .trails-grid,
+    .tips-grid,
+    .stories-grid,
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card,
+    .tip,
+    .story {
+      overflow: hidden;
+    }
+
+    .card img,
+    .story img,
+    .gallery-grid img {
+      width: 100%;
+    }
+
+    .card img {
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .card-content,
+    .tip,
+    .story-content {
+      padding: 1.25rem;
+    }
+
+    .card h3,
+    .tip h3,
+    .story h3 {
+      color: var(--forest);
+      margin-bottom: 0.6rem;
+      font-size: 1.2rem;
+    }
+
+    .trail-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e3d8c7;
+      font-size: 0.9rem;
+    }
+
+    .trail-details span {
+      background: #f8f4ec;
+      border-radius: 10px;
+      padding: 0.6rem;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      background: #edf3eb;
+      color: var(--forest);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .tips-section {
+      background: linear-gradient(180deg, #ece4d6 0%, #f4efe6 100%);
+    }
+
+    .tip {
+      border-top: 6px solid var(--clay);
+    }
+
+    .story {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .story img {
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .gallery-grid img {
+      height: 280px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .accessibility-note {
+      background: var(--deep-forest);
+      color: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      margin-top: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .accessibility-note h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 0.6rem;
+      color: var(--sand);
+    }
+
+    .contact-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: start;
+    }
+
+    .contact-box {
+      padding: 2rem;
+    }
+
+    .contact-box h3 {
+      color: var(--forest);
+      font-size: 1.6rem;
+      margin-bottom: 0.9rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border: 1px solid #d8d0c2;
+      border-radius: 12px;
+      background: #fffdfa;
+      font: inherit;
+      margin-top: 0.3rem;
+    }
+
+    button {
+      border: none;
+      background: var(--forest);
+      color: var(--white);
+      padding: 1rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    footer {
+      background: var(--forest);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      margin-top: 2rem;
+    }
+
+    footer p + p {
+      margin-top: 0.45rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 74px;
+        background: var(--deep-forest);
+        padding: 1rem;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.5rem 0;
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+      }
+
+      .trail-details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0.9rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.35rem;
+      }
+
+      .container {
+        padding: 3.5rem 1rem;
+      }
+
+      .panel,
+      .contact-box {
+        padding: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Adventure Trails home">Adventure <span>Trails</span></a>
+      <button class="menu-toggle" aria-label="Open navigation menu" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#trails">Trails</a></li>
+        <li><a href="#tips">Tips</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Trail guides • outdoor tips • adventure stories</div>
+        <h1>Find your next path, one trail at a time.</h1>
+        <p>
+          Adventure Trails is a hiking and travel blog designed to inspire outdoor exploration while giving visitors useful, practical information they can actually take with them on the trail.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#trails">Explore Trail Guides</a>
+          <a class="btn btn-secondary" href="#about">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <div class="section-title">
+        <h2>About Adventure Trails</h2>
+        <p>
+          Built for hikers, travelers, and curious beginners, this website blends useful trail information with a warm, outdoors-inspired design that feels grounded, natural, and inviting.
+        </p>
+      </div>
+
+      <div class="intro-grid">
+        <div class="panel">
+          <h3>A resource and a source of inspiration</h3>
+          <p>
+            Adventure Trails is meant to do two things at once: help visitors plan their adventures and make them excited to get outside. The site includes trail guides by location, beginner-friendly hiking advice, packing suggestions, destination highlights, and blog-style reflections from the trail.
+          </p>
+          <p>
+            The overall visual direction follows an earthy color palette, scenic imagery, and a rustic, outdoorsy tone to match the website’s purpose. The layout is designed to be easy to navigate, readable, and welcoming for people who want both information and inspiration.
+          </p>
+        </div>
+
+        <div class="highlights">
+          <div class="highlight-item">
+            <strong>Purpose:</strong> Inspire and inform outdoor enthusiasts.
+          </div>
+          <div class="highlight-item">
+            <strong>Audience:</strong> Hikers, travelers, and beginners looking for practical guidance.
+          </div>
+          <div class="highlight-item">
+            <strong>Style:</strong> Earthy, scenic, rustic, and easy to explore.
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid" aria-label="Website highlights">
+        <div class="stat"><strong>3</strong> featured trail guides</div>
+        <div class="stat"><strong>4</strong> practical hiking tips</div>
+        <div class="stat"><strong>6</strong> easy navigation sections</div>
+      </div>
+    </section>
+
+    <section class="container" id="trails">
+      <div class="section-title">
+        <h2>Featured Trail Guides</h2>
+        <p>
+          Browse trails by destination and discover what to expect before you lace up your boots.
+        </p>
+      </div>
+
+      <div class="trails-grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Mountain lake trail with pine trees" />
+          <div class="card-content">
+            <h3>Mountain Lake Loop</h3>
+            <p>A scenic day hike with alpine views, forest shade, and a calm lake waiting at the finish.</p>
+            <div class="trail-details">
+              <span><strong>Level</strong><br />Moderate</span>
+              <span><strong>Distance</strong><br />5.2 miles</span>
+              <span><strong>Best For</strong><br />Views</span>
+            </div>
+            <a href="https://www.alltrails.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">View Trail Info</a>
+            <span class="tag">Trail Guide</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Rocky overlook above a hiking valley" />
+          <div class="card-content">
+            <h3>Canyon Ridge Trail</h3>
+            <p>A rugged route with dramatic overlooks, ideal for adventurous hikers who love sweeping views.</p>
+            <div class="trail-details">
+              <span><strong>Level</strong><br />Hard</span>
+              <span><strong>Distance</strong><br />7.8 miles</span>
+              <span><strong>Best For</strong><br />Challenge</span>
+            </div>
+            <a href="https://www.nps.gov/index.htm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Explore National Parks</a>
+            <span class="tag">Destination Highlight</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Sunlit forest trail through tall trees" />
+          <div class="card-content">
+            <h3>Pine Hollow Path</h3>
+            <p>A relaxed beginner trail through wooded scenery, perfect for a quiet morning hike.</p>
+            <div class="trail-details">
+              <span><strong>Level</strong><br />Easy</span>
+              <span><strong>Distance</strong><br />2.9 miles</span>
+              <span><strong>Best For</strong><br />Beginners</span>
+            </div>
+            <a href="https://www.rei.com/learn/expert-advice/hiking-for-beginners.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">Beginner Hiking Guide</a>
+            <span class="tag">Beginner Friendly</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container tips-section" id="tips">
+      <div class="section-title">
+        <h2>Outdoor Tips</h2>
+        <p>
+          Practical advice that helps visitors feel prepared, comfortable, and confident on the trail.
+        </p>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip">
+          <h3>Pack with purpose</h3>
+          <p>Bring water, snacks, sunscreen, a phone charger, and a small first-aid kit. Lightweight essentials make a big difference.</p>
+        </div>
+        <div class="tip">
+          <h3>Start where you are</h3>
+          <p>Not every trail needs to be intense. Beginner hikes are a great way to build confidence and enjoy the outdoors without pressure.</p>
+        </div>
+        <div class="tip">
+          <h3>Check conditions first</h3>
+          <p>Look up the weather, trail closures, and terrain details before heading out so your trip stays safe and stress-free.</p>
+        </div>
+        <div class="tip">
+          <h3>Leave no trace</h3>
+          <p>Respect the environment by cleaning up after yourself, staying on marked paths, and helping preserve the trail for others.</p>
+        </div>
+      </div>
+
+      <div class="accessibility-note">
+        <h3>Accessibility and design choices</h3>
+        <p>
+          This site uses clear section headings, readable contrast, descriptive image alt text, labeled form fields, keyboard focus styles, and a responsive layout so the design works across screen sizes.
+        </p>
+      </div>
+    </section>
+
+    <section class="container" id="stories">
+      <div class="section-title">
+        <h2>Adventure Stories</h2>
+        <p>
+          Personal, blog-style storytelling helps the website feel relatable rather than overly technical.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        <article class="story">
+          <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80" alt="Hiker standing on a cliff at sunset" />
+          <div class="story-content">
+            <h3>Chasing sunrise on the ridge</h3>
+            <p>A quiet early-morning climb turned into one of the most memorable views of the season, reminding me why slow, steady hikes are often the most rewarding.</p>
+          </div>
+        </article>
+
+        <article class="story">
+          <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1200&q=80" alt="Campfire scene in the mountains" />
+          <div class="story-content">
+            <h3>What I learned on my first overnight trip</h3>
+            <p>From overpacking to underestimating the temperature, this experience became the perfect lesson in preparation, pacing, and enjoying the unexpected.</p>
+          </div>
+        </article>
+
+        <article class="story">
+          <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=80" alt="Snowy mountain peak and hiking landscape" />
+          <div class="story-content">
+            <h3>Finding stillness above the tree line</h3>
+            <p>A high-elevation trail offered more than views. It created space to unplug, reset, and appreciate just how grounding outdoor travel can be.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="gallery">
+      <div class="section-title">
+        <h2>Photo Gallery</h2>
+        <p>
+          Images help capture the atmosphere of each destination and bring the site’s adventurous tone to life.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Mountain range at golden hour" />
+        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80" alt="Backpacker hiking through a valley" />
+        <img src="https://images.unsplash.com/photo-1444201983204-c43cbd584d93?auto=format&fit=crop&w=1200&q=80" alt="Forest trail with warm light" />
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Open road leading toward mountains" />
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="section-title">
+        <h2>Plan Your Next Adventure</h2>
+        <p>
+          Visitors can use this section to connect, ask questions, or request recommendations for future trail content.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-box">
+          <h3>Why this section matters</h3>
+          <p>
+            A strong website should feel interactive and useful. This contact area supports the blog’s community feel while giving visitors a clear next step.
+          </p>
+          <p style="margin-top: 1rem;">
+            It also balances the website’s informational content with a more personal, approachable touch.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <h3>Get in touch</h3>
+          <form>
+            <div>
+              <label for="name">Your Name</label>
+              <input id="name" type="text" placeholder="Your Name" required />
+            </div>
+            <div>
+              <label for="email">Your Email</label>
+              <input id="email" type="email" placeholder="Your Email" required />
+            </div>
+            <div>
+              <label for="topic">Message Topic</label>
+              <select id="topic">
+                <option>Trail recommendation</option>
+                <option>Beginner hiking question</option>
+                <option>Travel suggestion</option>
+                <option>General message</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" rows="5" placeholder="Tell me where you want to explore next..."></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Adventure Trails. Designed for exploration, inspiration, and outdoor storytelling.</p>
+    <p>Trail guides • packing tips • destination highlights • adventure stories</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('show');
+      });
+    });
+  </script>
+</body>
+</html>
